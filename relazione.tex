@@ -47,7 +47,8 @@ le loro incertezze tra di loro e con il valore ottenuto da un multimetro digital
        to[short,o-*] (0,2)
        to[short] (0,4)
        to[short] (5.5,4)
-       to[ammeter] (6.5,4)
+       to[ammeter]node[right = -0.5em,yshift=-2.3ex] {$R_A = 1600\ohm$} node[right = -7.5em,yshift=-2.3ex] {$I_{fs} = 40\mu A$} 
+       node[right = 0.1em,yshift=2.3ex] {$+$} node[right =-3.5em,yshift=2.3ex] {$-$}(6.5,4)
        to[short] (12,4)
        to[short,-*] (12,2)
        to[R= $720\ohm$,-o](12,0)node[right = 0.1em] {$A_6$}
@@ -76,6 +77,23 @@ le loro incertezze tra di loro e con il valore ottenuto da un multimetro digital
       node[label={below:$500\mu A$}] {};
     \end{circuitikz}
     \caption{Schema semplificato tester ICE amperometro}
+    \label{ICE_amp}
 \end{figure}
-
+Il circuito in figura \eqref{ICE_amp} una volta collegato all'interno del circuito tramite la bocchetta $A_i$ può essere schemattizato come segue
+\begin{figure}[h!]
+  \centering
+    \begin{circuitikz}
+      \draw (0,0) 
+      %node[label={below:$A_i$}] {}
+      node[xshift=-1.5ex] {$A_i$}
+      to[short,o-*](2,0)
+      to[R=$R_{sh}$,-*](2,-2)
+      to[short,-o]node[xshift=-4.0ex] {A}(0,-2);
+      \draw(2,0)
+      to[R=$R_S$](4,0)
+      to[ammeter](6,0)
+      to[R=$R_A$](6,-2)
+      to[short,-*](2,-2);
+      \end{circuitikz}  
+\end{figure}
 \end{document}
