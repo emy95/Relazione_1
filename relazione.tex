@@ -25,7 +25,7 @@
 	\renewcommand{\abstractname}{Abstract}
 	
 	\begin{abstract}
-In questa esperienza misureremo il valore di una resistenza analizzando con un tester ICE la differenze di potenziale ai suoi capi ela corrente che gli passa attraverso. Verificheremo quindi il comportamento ohmico di tale resistenza. Infine studiaremo la caratteristica Volt-Amperometrica di una lampadina.
+In questa esperienza misureremo il valore di una resistenza analizzando con un tester ICE le differenze di potenziale ai suoi capi e la corrente che gli passa attraverso. Verificheremo quindi il comportamento ohmico di tale resistenza. Lo facciamo in due modi, utilizzando un circuito con amperometro a monte e un circuito con amperometro a valle. Inoltre utilizzeremo due fondo scala diversi per ciascun circuito. 
 	\end{abstract}
 
 \section{Obiettivi}
@@ -33,11 +33,28 @@ In questa esperienza misureremo il valore di una resistenza analizzando con un t
 \item Determinare il valore di resistenze tramite misure volt-amperometriche con il tester
 ICE, in configurazione amperometro “a monte” e “a valle”.
 \item Verificare il comportamento ohmico della resistenza e confrontare i valori ottenuti e
-le loro incertezze tra di loro e con il valore ottenuto da un multimetro digitale. 
-\item Graficare e commentare la caratteristica Volt-Amperometrica di una lampadina
+le loro incertezze tra di loro e con il valore ottenuto da un multimetro digitale.
 \end{itemize}
 \section{Strumenti}
+\begin{itemize}
+\item Due tester ICE (tolleranza 5\% fondoscala)
+\item resistenza da misurare
+\item generatore di tensione variabile
+\item breadboard
+\item cavi di collegamento
+\end{itemize}
 \section{Procedura di misura}
+Abbiamo eseguito 4 misure di resistenza in totale. Le prime due misure sono state eseguite con un circuito con amperomentro a monte rappresentato in figura\eqref{}, le altre due sono state eseguite con amperometro a valle in figura \eqref{}. Entrambe le coppie con 2 fondo scale diverse. Abbiamo effettuato la misura di differenza di potenziale e corrente con due tester ICE. L'incertezza di tali misure sono dovute esclusivamente alla risoluzione $\Delta X$ della scala del tester: 5\% del fondo scala. Quindi l'incertezza standard è:
+\[ \sigma X = \frac{\Delta X}{\sqrt{12}}\]
+In realtà l'incertezza sulla misura è data anche dalle caratteristiche non ideali dei tester utilizzati. Nella seconda parte abbiamo analizzato i circuiti del tester utilizzato e introdotto alcuni elementi di correzione sulle misure effettuate per avere il valore più corretto della resistenza da misurare.
+\begin{figure}[H]
+  \centering
+    \begin{circuitikz}
+      \draw (0,0) 
+      
+      ;
+      \end{circuitikz}  
+\end{figure}
 \section{Circuito amperometro a monte}
 \section{Cirucito amperometro a valle}
 \section{Analisi circuito tester ICE}
