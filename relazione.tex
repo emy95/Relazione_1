@@ -1,4 +1,4 @@
-\documentclass[12pt,titlepage]{article}
+\documentclass[12pt]{article}
 \usepackage{mathtools}
 \usepackage[italian]{babel}
 \usepackage{graphicx}
@@ -14,6 +14,8 @@
 
 \input{volt.tex}
 
+
+
 \addtolength{\topmargin}{-.875in}
 \textheight=674pt
 
@@ -22,14 +24,16 @@
 \date{}
 
 \begin{document}
-	\maketitle
-	\tableofcontents
+  \input{titolo.tex}
+	\newpage
 	\renewcommand{\abstractname}{Abstract}
 	
 	\begin{abstract}
 In questa esperienza misureremo il valore di una resistenza analizzando con un tester ICE le differenze di potenziale ai suoi capi e la corrente che gli passa attraverso. Verificheremo quindi il comportamento ohmico di tale resistenza. Lo facciamo in due modi, utilizzando un circuito con amperometro a monte e un circuito con amperometro a valle. Inoltre utilizzeremo due fondo scala diversi per ciascun circuito. 
 	\end{abstract}
-
+  \vspace{10em}
+\tableofcontents
+  \newpage
 \section{Obiettivi}
 \begin{itemize}
 \item Determinare il valore di resistenze tramite misure volt-amperometriche con il tester
@@ -85,7 +89,7 @@ In realtà l'incertezza sulla misura è data anche dalle caratteristiche non ide
         \caption{Circuito amperometro a valle}
         \label{valle}
     \end{subfigure}
-   
+   \caption{Circuiti usati per la misura}
 \end{figure}
 
 \section{Circuito amperometro a monte}
@@ -150,4 +154,87 @@ Il circuito in figura \eqref{ICE_amp} una volta collegato all'interno del circui
       \end{circuitikz}  
 \end{figure}
 \section{Conclusioni}
+
+\newpage
+\begin{appendices}
+\section{Tabelle dati}
+\begin{table}[H]
+\centering
+
+  \begin{subtable}{.5\textwidth}
+    \centering
+    \begin{tabular}{|c|c|} \hline
+     $\mathbf{i {[mA]}}$  & $\mathbf{\Delta V [V]}$  \\ \hline
+      0 & 0  \\ \hline
+      8.5 & 2.3  \\ \hline
+      15.9 & 4.1  \\ \hline
+      24 & 6.1  \\ \hline
+      31.7 & 8.1  \\ \hline
+      40.4 & 10  \\ \hline
+      49.8 & 12.1  \\ \hline
+      56.8 & 14.3  \\ \hline
+      63.3 & 16  \\ \hline
+      71.8 & 18.4  \\ \hline
+    \end{tabular}
+    \caption{Fondo scala $qualcosa$}
+  \end{subtable}%
+  \begin{subtable}{.5\textwidth}
+  \centering
+  \begin{tabular}{|c|c|} \hline
+  $\mathbf{i {[mA]}}$  & $\mathbf{\Delta V [V]}$  \\ \hline
+    77.6 & 20  \\ \hline
+    73.4 & 18.8  \\ \hline
+    66.2 & 17  \\ \hline
+    59.4 & 15  \\ \hline
+    52.4 & 13.1  \\ \hline
+    44.2 & 11  \\ \hline
+    36.2 & 8.9  \\ \hline
+    26.5 & 6.9  \\ \hline
+    18.9 & 5.1  \\ \hline
+    -0.5 & 0  \\ \hline
+  \end{tabular}
+  \caption{Fondo scala $qualcosa$}
+\end{subtable}
+\caption{Misurazioni con circuito amperometro a monte}
+\end{table}
+\begin{table}[H]
+\centering
+
+  \begin{subtable}{.5\textwidth}
+    \centering
+    \begin{tabular}{|c|c|} \hline
+     $\mathbf{i {[mA]}}$  & $\mathbf{\Delta V [V]}$  \\ \hline
+      0 & 0  \\ \hline
+      8.5 & 2.3  \\ \hline
+      15.9 & 4.1  \\ \hline
+      24 & 6.1  \\ \hline
+      31.7 & 8.1  \\ \hline
+      40.4 & 10  \\ \hline
+      49.8 & 12.1  \\ \hline
+      56.8 & 14.3  \\ \hline
+      63.3 & 16  \\ \hline
+      71.8 & 18.4  \\ \hline
+    \end{tabular}
+    \caption{Fondo scala $qualcosa$}
+  \end{subtable}%
+  \begin{subtable}{.5\textwidth}
+  \centering
+  \begin{tabular}{|c|c|} \hline
+  $\mathbf{i {[mA]}}$  & $\mathbf{\Delta V [V]}$  \\ \hline
+    77.6 & 20  \\ \hline
+    73.4 & 18.8  \\ \hline
+    66.2 & 17  \\ \hline
+    59.4 & 15  \\ \hline
+    52.4 & 13.1  \\ \hline
+    44.2 & 11  \\ \hline
+    36.2 & 8.9  \\ \hline
+    26.5 & 6.9  \\ \hline
+    18.9 & 5.1  \\ \hline
+    -0.5 & 0  \\ \hline
+  \end{tabular}
+  \caption{Fondo scala $qualcosa$}
+\end{subtable}
+\caption{Misurazioni con circuito amperometro a valle}
+\end{table}
+\end{appendices}
 \end{document}
