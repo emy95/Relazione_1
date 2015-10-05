@@ -12,6 +12,8 @@
 \usepackage{tikz}
 \usepackage{circuitikz}
 
+\input{volt.tex}
+
 \addtolength{\topmargin}{-.875in}
 \textheight=674pt
 
@@ -44,17 +46,48 @@ le loro incertezze tra di loro e con il valore ottenuto da un multimetro digital
 \item cavi di collegamento
 \end{itemize}
 \section{Procedura di misura}
-Abbiamo eseguito 4 misure di resistenza in totale. Le prime due misure sono state eseguite con un circuito con amperomentro a monte rappresentato in figura\eqref{}, le altre due sono state eseguite con amperometro a valle in figura \eqref{}. Entrambe le coppie con 2 fondo scale diverse. Abbiamo effettuato la misura di differenza di potenziale e corrente con due tester ICE. L'incertezza di tali misure sono dovute esclusivamente alla risoluzione $\Delta X$ della scala del tester: 5\% del fondo scala. Quindi l'incertezza standard è:
+Abbiamo eseguito 4 misure di resistenza in totale. Le prime due misure sono state eseguite con un circuito con amperomentro a monte rappresentato in figura \eqref{monte}, le altre due sono state eseguite con amperometro a valle in figura \eqref{valle}. Entrambe le coppie con 2 fondo scale diverse. Abbiamo effettuato la misura di differenza di potenziale e corrente con due tester ICE. L'incertezza di tali misure sono dovute esclusivamente alla risoluzione $\Delta X$ della scala del tester: 5\% del fondo scala. Quindi l'incertezza standard è:
 \[ \sigma X = \frac{\Delta X}{\sqrt{12}}\]
 In realtà l'incertezza sulla misura è data anche dalle caratteristiche non ideali dei tester utilizzati. Nella seconda parte abbiamo analizzato i circuiti del tester utilizzato e introdotto alcuni elementi di correzione sulle misure effettuate per avere il valore più corretto della resistenza da misurare.
 \begin{figure}[H]
-  \centering
-    \begin{circuitikz}
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \begin{circuitikz}
       \draw (0,0) 
-      
+      to[battery](0,2)
+      to[ammeter](2,2)
+      to[myvoltmeter](2,0)
+      to[short](0,0)
       ;
+      \draw(2,2)
+      to[short](3,2)
+      to[R=$R_x$](3,0)
+      to[short](2,0);
       \end{circuitikz}  
+        \caption{Circuito amperometro a monte}
+        \label{monte}
+    \end{subfigure}
+    \qquad \qquad%add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.3\textwidth}
+       \begin{circuitikz}
+      \draw (0,0) 
+      to[battery](0,2)
+      to[short](1,2)
+      to[myvoltmeter](1,0)
+      to[short](0,0)
+      ;
+      \draw(1,2)
+      to[ammeter](3,2)
+      to[R=$R_x$](3,0)
+      to[short](1,0);
+      \end{circuitikz}  
+        \caption{Circuito amperometro a valle}
+        \label{valle}
+    \end{subfigure}
+   
 \end{figure}
+
 \section{Circuito amperometro a monte}
 \section{Cirucito amperometro a valle}
 \section{Analisi circuito tester ICE}
