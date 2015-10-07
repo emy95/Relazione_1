@@ -136,25 +136,168 @@ In realtà l'incertezza sulla misura è data anche dalle caratteristiche non ide
     \caption{Schema semplificato tester ICE amperometro}
     \label{ICE_amp}
 \end{figure}
-Il circuito in figura \eqref{ICE_amp} una volta collegato all'interno del circuito tramite la bocchetta $A_i$ può essere schemattizato come segue
+\begin{figure}[h!]
+  \centering
+    \begin{circuitikz}
+      \draw (0,-1) 
+       node[label={below:V}] {}
+       node[yshift=-1ex] {=}
+       to[short,o-*] (0,2)
+       to[short] (0,4)
+       to[short] (5.5,4)
+       to[ammeter]node[right = -0.5em,yshift=-2.3ex] {$R_A = 1600\ohm$} node[right = -7.5em,yshift=-2.3ex] {$I_{fs} = 40\mu A$} 
+       node[right = 0.1em,yshift=2.3ex] {$+$} node[right =-3.5em,yshift=2.3ex] {$-$}(6.5,4)
+       to[short] (12,4)
+       to[short,-*] (12,2)
+       to[R= $720\ohm$,-o](14,2)node[right = 0.1em] {$B_7$}
+       node[label={below:$100 mV$}] {};
+       \draw (2,0)
+      to[short,-o](2,-1)node[right = 0.1em] {$B_1$}
+      node[label={below:2V}] {};
+      \draw (4,0)
+      to[short,-o](4,-1)node[right = 0.1em] {$B_2$}
+      node[label={below:10V}] {};
+      \draw (6,0)
+      to[short,-o](6,-1)node[right = 0.1em] {$B_3$}
+      node[label={below:50V}] {};
+      \draw (8,0)
+      to[short,-o](8,-1)node[right = 0.1em] {$B_4$}
+      node[label={below:200V}] {};
+      \draw (10,0)
+      to[short,-o](10,-1)node[right = 0.1em] {$B_5$}
+      node[label={below:500V}] {};
+      \draw (12,0)
+      to[short,-o](12,-1)node[right = 0.1em] {$B_6$}
+      node[label={below:1000V}] {};
+      \draw(12,2)
+      to[short](12,1)
+      to[R,l_=$6.52\,k\ohm$](8,1)
+      to[R,l_=$32.2\,k\ohm$](5,1)
+      to[short](2,1)
+      to[short,-*](2,0) 
+      to[R=$R_{V_1}$,*-*]node[below,right=-3.6em,yshift=-2.3ex] {160k\ohm}(4,0) 
+      to[R=$R_{V_2}$,*-*]node[below,right=-3.6em,yshift=-2.3ex] {800k\ohm}(6,0) 
+      to[R=$R_{V_3}$,*-*]node[below,right=-3.6em,yshift=-2.3ex] {3M\ohm}(8,0)  
+      to[R=$R_{V_4}$,*-*]node[below,right=-3.6em,yshift=-2.3ex] {6M\ohm}(10,0) 
+      to[R=$R_{V_5}$,*-*]node[below,right=-3.6em,yshift=-2.3ex] {10M\ohm}(12,0);
+      \draw (0,2)
+      to[R,l = $0.064\ohm$](2,2)
+      to[R,l = $0.576\ohm$](4,2)
+      to[R,l = $5.76\ohm$](6,2)
+      to[R,l = $57.6\ohm$](8,2)
+      to[R,l = $576\ohm$](10,2)
+      to[R,l = $5760\ohm$](12,2);
+    \end{circuitikz}
+    \caption{Schema semplificato tester ICE voltmetro}
+    \label{ICE_volt}
+\end{figure}
+\subsection{Analisi circuito amperometro a valle}
 \begin{figure}[H]
   \centering
     \begin{circuitikz}
       \draw (0,0) 
-      %node[label={below:$A_i$}] {}
-      node[xshift=-1.5ex] {$A_i$}
-      to[short,o-*](2,0)
-      to[R=$R_{sh}$,-*](2,-2)
-      to[short,-o]node[xshift=-4.0ex] {A}(0,-2);
-      \draw(2,0)
-      to[R=$R_S$](4,0)
-      to[ammeter](6,0)
-      to[R=$R_A$](6,-2)
-      to[short,-*](2,-2);
+      to[battery](0,6)
+      to[short,-o]node[above,right=1.2em,yshift=1.5ex] {A}(3,6)
+      to[short,i=$i$](3,5)
+      to[short,i=$i_{sh}$](2,5)
+      to[R=$R_{sh}$](2,2)
+      to[short](3,2)
+      to[R=$R_x$,i>^=$i$,-o]node[below,yshift=-1.3ex]{B}(3,0)
+      to[short](0,0);
+      \draw (3,5)
+      to[short,i_=$i_{A}$](4,5)
+      to[R=$R_S$](4,3.5)
+      to[myl](4,2)
+      to[short](3,2);
+      \draw(3,6)
+      to[short,i=$i_v$](6,6)
+      to[R=$R_{V}$](6,4)
+      to[short,i=$i_p$](5,4)
+      to[R=$6.4k\ohm$](5,1)
+      to[short](6,1)
+      to[short](6,0)
+      to[short](3,0);
+      \draw(6,4)
+      to[short,i=$i_l$](7,4)
+      to[R=$1.6k\ohm$](7,2.5)
+      to[myl](7,1)
+      to[short](6,1);
       \end{circuitikz}  
+    \caption{Schema aperometro a valle con generica lancetta collegata a bobina}
 \end{figure}
+Il circuito con l'amperometro a valle una volta collegato il circuito dell'amperometro in figura \eqref{ICE_amp} tramite la bocchetta $A_i$ e il circuito del voltmetro in figura \eqref{ICE_volt} può essere schematizzato come nella figura immediatamente sopra. Analizziamo per primo il comportamento dell'amperometro,
+abbiamo $R_x$ che è la nostra resistenza da misurare, mentre le restanti nel caso $i\neq 6$ sono rispettivamente:
+\begin{equation}
+R_{sh} = \sum_{k=0}^{i-1}R_{i-k} \qquad R_S = R_A + \sum_{k=1}^5 R_{k+1}
+\end{equation}
+Nel caso $i=6$ valgono semplicemente $R_S = 720\,\ohm$,$R_{sh} = 6400\,\ohm$.
+Per risolvere il circuito utilizziamo la legge di Kirchhoff sulle correnti
+\begin{equation}
+\label{cor}
+i = i_{sh} + i_A
+\end{equation}
+Inoltre sappiamo dalla legge di Ohm
+\begin{equation}
+i_{sh} = \frac{\Delta V}{R_{sh}},\quad i_A = \frac{\Delta V}{R_S} \implies i_{sh} = i_A\frac{R_S}{R_{sh}}
+\end{equation}
+Se inseriamo l'equazione appena trovata nell'equazione \eqref{cor} otteniamo
+\begin{equation}
+\label{ia}
+i=i_A\left(1 + \frac{R_S}{R_{sh}}\right) = i_A\left(\frac{R_S+R_{sh}}{R_{sh}}\right) =  i_A\left(\frac{8000}{R_{sh}}\right)
+\end{equation}
+La bobina mobile dello strumento che utilizziamo produce una deflessione della lancetta pari al 100\% quando è percorso da una corrente di $40\,\mu A$, quindi la corrente misurata $i_m$ con un fondo scala $FS$ vale
+\begin{equation}
+i_m = FS\left(\frac{i_A}{40\,\mu A}\right)
+\end{equation}
+Combinando questa equazione con la \eqref{ia} otteniamo
+\begin{equation}
+i_m = i\frac{FS\,R_{sh}}{40\mu A\,8000}
+\end{equation}
+Notiamo ora che il prodotto $FS\,R_{sh} = 0.32$ è sempre costante esattamente uguale a $8000*40\times 10^{-6}$. Per cui
+\begin{equation}
+i_m = i
+\end{equation}
+Ovvero la corrente misurata dall'amperometro è esattamente quella che entra all'interno dell'amperometro e che esce, quindi la corrente misurata è effettivamente la corrente che attraversa la resistenza $R_x$ che dobbiamo misurare e non occorre correggerla.\\
+\\Analizziamo ora il comportamento del voltmetro, abbiamo che se collegato alla bocchetta $B_i$ con $i\neq 7$
+\begin{equation}
+R_V = 38740 + \sum_{k=0}^{i-1}R_{V_i}
+\end{equation}
+Nel caso $i=7$ abbiamo semplicemente $R_V = 720\,\ohm$. Utilizzando come prima Kirchhoff possimao scrivere
+\begin{equation}
+\label{iv}
+i_v = i_l+i_p
+\end{equation}
+Dalla legge di Ohm
+\begin{equation}
+i_p = \frac{\Delta V'}{6400}\quad i_l = \frac{\Delta V'}{1600} \implies i_p = i_l\frac{1600}{6400}
+\end{equation}
+Da cui mettendo nella \eqref{iv}
+\begin{equation}
+i_v = i_l \left(1 + \frac{1600}{6400}\right) = 1.25i_l \implies i_l=0.8i_v
+\end{equation}
+Come prima la bobina mobile dello strumento che utilizziamo produce una deflessione della lancetta pari al 100\% quando è percorso da una corrente di $40\,\mu A$, quindi la tensione misurata $\Delta V_m$ con un fondo scala $FS$ vale
+\begin{equation}
+\label{vm}
+V_m = FS\left(\frac{i_l}{40\,\mu A}\right) = FS\left(\frac{0.8i_v}{40\,\mu A}\right)
+\end{equation}
+Sia $\Delta V$ la differenza di potenziale tra $A$ e $B$ possiamo scrivere con la legge di Ohm e la resistenza efficace $R_{eff}$
+\begin{equation}
+i_v = \frac{\Delta v}{R_{eff}} = \frac{\Delta v}{R_{V}+1280}
+\end{equation}
+La \eqref{vm} diventa
+\begin{equation}
+V_m = FS\frac{0.8\Delta V}{(R_V+1280)40\,\mu A} = \Delta V\frac{FS}{R_V+1280}\frac{0.8}{40\,\mu A}
+\end{equation}
+Adesso basta notare che $FS/ (R_V+1280)$ e vale esattamente $0.8/(40\times 10^{-6})$ possiamo concludere quindi
+\begin{equation}
+\Delta V_m = \Delta V
+\end{equation}
+Ovvero la differenza di potenziale misurato dal voltmetro è proprio la differenza di potenziale ai suoi capi.\\
+\\Però in questo circuito non si misura la d.d.p ai capi della resistenza da misurare, ma ad un capo dell'amperometro e a un capo della resistenza, si può correggere facilemente questa cosa tenendo conto che
+\begin{equation}
+\Delta V_m = \Delta V_A + \Delta V_R
+\end{equation}
 \section{Conclusioni}
-
 \newpage
 \begin{appendices}
 \section{Tabelle dati}
