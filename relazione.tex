@@ -293,6 +293,31 @@ Ovvero la differenza di potenziale misurato dal voltmetro è proprio la differen
 \begin{equation}
 \Delta V_m = \Delta V_A + \Delta V_R
 \end{equation}
+\section{Stima della resistenza}
+ Per valutare la compatibilità fra le resistenze misurate, bisogna prendere in considerazione gli aspetti non ideali di voltmetro e amperometro. Poiché la disposione amperometro a monte e a valle, di fatto, costitiscono due circuiti strutturalmente differenti, ci presteremo a calcoli correttivi anch'essi diversi.
+
+(Tabella)
+
+Nel caso dell'amperometro a monte, la resitenza del volmetro $R_v$ (vedi tabella), è posta in parallelo con la resistenza da misurare $R_x$. Poiché $R_v$ non è infinitamente grande, la resitenza misurata $R_m$ è $R_v||R_x$. Quindi svolgendo i calcoli per $R_x$:
+\begin{equation}
+R_x = \frac{R_v R_m}{R_v - R_m}
+\end{equation}
+L'errore su $R_x$ si ottiene propagando l'incertezza di $R_m$ in tal modo.(ciccia).
+ \begin{equation}
+ \sigma [R_x] = \frac{R_v}{R_v-R_m} \sigma [R_m]
+\end{equation}
+\\
+Nel caso dell'amperometro a valle, bisogna prendere in considerazione la resistenza interna dell'amperometro $R_a$ in serie con la resistenza che si vuole calcolare $R_x$. Perciò abbiamo calcolato $R_x$ ricavandola da $R_m$ nel seguente modo:
+\begin{equation}
+R_x = R_m-R_a
+\end{equation}
+L'errore su $R_x$ $\sigma [R_x]$ è identica all'errore su $R_m$ $\sigma [R_m]$, vista la linearità dell'equazione ().\\
+I valori di $R_x$ con le rispettive incertezze sono posti in tabella.
+
+()
+
+
+
 \section{Conclusioni}
 \newpage
 \begin{appendices}
